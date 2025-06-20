@@ -13,7 +13,7 @@ import { stripeWebhooks } from './controllers/stripeWebhooks.js'
 const app = express()
 
 config()
-ConnectDB()
+await ConnectDB()
 const port = process.env.PORT;
 
 // Stripe

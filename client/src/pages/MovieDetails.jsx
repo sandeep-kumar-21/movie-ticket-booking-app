@@ -99,7 +99,6 @@ function MovieDetails() {
           ))}
         </div>
       </div>
-      {console.log(show.movie.casts)}
 
       <DateSelect dateTime={show.dateTime} id={id} />
     
