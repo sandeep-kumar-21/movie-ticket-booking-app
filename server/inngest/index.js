@@ -2,7 +2,7 @@ import { Inngest } from "inngest";
 import User from "../models/User.js";
 import Booking from "../models/Booking.js";
 import Show from "../models/Show.js";
-import sendEmail from "../config/nodeMailer.js";
+import sendEmail from "../config/nodemailer.js";
 
 // Create a client to send and receive events
 export const inngest = new Inngest({
@@ -89,7 +89,7 @@ const sendBookingConfirmationEmail = inngest.createFunction(
             path: 'show',
             populate: {path: "movie", model: "Movie"}
         }).populate('user');
-
+        
         await sendEmail({
             to: booking.user.email,
             subject: `Payment Confirmation: "${booking.show.movie.title}" booked!`,
