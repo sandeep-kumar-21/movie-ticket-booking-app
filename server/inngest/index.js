@@ -4,7 +4,10 @@ import Booking from "../models/Booking.js";
 import Show from "../models/Show.js";
 
 // Create a client to send and receive events
-export const inngest = new Inngest({ id: "movie-ticket-booking" });
+export const inngest = new Inngest({
+  id: "movie-ticket-booking",
+  eventKey: process.env.INNGEST_EVENT_KEY  
+});
 
 // Inngest Function to save user data to a database
 const syncUserCreation = inngest.createFunction(
@@ -49,7 +52,7 @@ const syncUserUpdation = inngest.createFunction(
     }
 )
 
-// Inngest funtion to candel booking and release seasts of show after 10 minutes of booking create if payment is not made
+// Inngest funtion to cancel booking and release seasts of show after 10 minutes of booking create if payment is not made
 const releaseSeatsAndDeleteBooking = inngest.createFunction(
     {id: 'release-seats-delete-booking'},
     {event: "app/checkpayment"},
