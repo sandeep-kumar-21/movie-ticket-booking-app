@@ -14,6 +14,7 @@ export const stripeWebhooks = async (req, res) => {
     }catch(error){
         return res.status(400).send(`Webhook Error: ${error.message}`)
     }
+
     try {
 
         switch(event.type) {
@@ -28,7 +29,12 @@ export const stripeWebhooks = async (req, res) => {
 
 
                 await Booking.findByIdAndUpdate(bookingId,{isPaid: true, paymentLink: ""})
-                console.log(bookingId);
+
+                // Send Confirmation Email
+                await inngest.send({
+                    name: "app/show.booked",
+                    data: {bookingId}
+                })
                 break;
             }
                 

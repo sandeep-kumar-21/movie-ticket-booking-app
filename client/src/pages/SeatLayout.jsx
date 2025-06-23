@@ -95,14 +95,16 @@ function SeatLayout() {
         headers: {Authorization: `Bearer ${await getToken()}`}
       })
 
+      console.log(data.success + ":in bookingTicket SeaatLayout");
       if(data.success){
         window.location.href = data.url;
       }else{
+        console.log("in bookigTicket seatLayout else block:" + error.message)
         toast.error(data.message)
       }
     }catch(error){
       toast.error(error.message)
-      console.log(error.message)
+      console.log("in bookigTicket seatLayout catch block:" + error.message)
     }
   }
 

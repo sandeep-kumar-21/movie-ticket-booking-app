@@ -16,7 +16,7 @@ config()
 await ConnectDB()
 const port = process.env.PORT;
 
-// Stripe
+// Stripe webhook route
 app.use('/api/stripe', express.raw({type: 'application/json'}), stripeWebhooks)
 
 //Middleware
