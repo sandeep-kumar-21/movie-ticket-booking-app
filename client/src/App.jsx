@@ -12,10 +12,10 @@ import Layout from "./pages/admin/Layout";
 import Dashboard from "./pages/admin/Dashboard";
 import ListShows from "./pages/admin/ListShows";
 import ListBookings from "./pages/admin/ListBookings";
-import AddShows from "./pages/admin/addShows";
 import { useAppContext } from "../context/AppContext";
 import { SignIn } from "@clerk/clerk-react";
 import Loading from "./components/Loading";
+import AddShows from "./pages/admin/AddShows";
 
 
 function App() {
